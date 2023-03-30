@@ -1,4 +1,19 @@
-<?php require 'inc/data/products.php'; ?>
+<?php 
+require 'inc/data/products.php'; 
+
+
+session_start();
+require 'inc/data/products.php';
+
+if (isset($_GET['add_to_cart'])) {
+    if (isset($_SESSION['cookies'])) {
+        array_push($_SESSION['cookies'], $_GET['add_to_cart']);
+    } else {
+        $_SESSION['cookies'] = array($_GET['add_to_cart']);
+    }
+}
+
+?>
 <?php require 'inc/head.php'; ?>
 <section class="cookies container-fluid">
     <div class="row">
